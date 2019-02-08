@@ -1,68 +1,104 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# WebApp
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [1. Requirements](#1-requirements)
+- [2. Quick Start](#2-quick-start)
+  - [a. Building the Project](#a-building-the-project)
+  - [b. Running on Dev Mode](#b-running-on-dev-mode)
+- [3. Tools](#3-tools)
+- [4. Quality Procedures](#4-quality-procedures)
+  - [a. Git](#a-git)
+  - [b. Code Style](#b-code-style)
+  - [c. Adding new Dependencies](#c-adding-new-dependencies)
+  - [d. Testing](#d-testing)
+- [5. Deployment](#5-deployment)
 
-### `npm start`
+## 1. Requirements
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ We recommend to use the Node Version Manager (NVM) to manage Node versions, we work with the LTS version, you can find the LTS version here: https://github.com/nodejs/Release#release-schedule
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+##### Installation
+Mac users, use brew:
+    1. Use the command `brew install nvm`.
+    2. To install a NodeJs version use the command `nvm install`, NVM will use the Node version as specified in the .nvmrc .
+    3. Activate the node version with: `nvm use`. This action should be done on every new session of the console.
 
-### `npm test`
+## 2. Quick Start
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## a. Environment files
+1. `create-react-app` already has support to read .env* files. So no need to add packages to handle that.
+2. Create a `.env.[development|production]` file inside root directory using the `.env.sample` template, **ask for your keys and add them** Without those files you won't be able to have a fully working development environment and won't be able to build for production.
+3. Every environment variable set in those files need to have the preffix **REACT_APP_** or it wont be read by the scripts. This is to prevent variables undesired exposure.
 
-### `npm run build`
+### b. Building the Project
+1. Install the third party dependencies. Use the command `npm install`.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Generate the bundles. Use the command `npm run build`.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### c. Running on Dev Mode
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When running on dev mode, changes in the *js* and the *style* sources are immediately reflected in the browser.
 
-### `npm run eject`
+Features related to locales are limited with the webpack server.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run the project on dev mode:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Run the WebPack Development Server. Use the command `npm start`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Open the Index page.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    * Visit http://localhost:3000
 
-## Learn More
+## 3. Tools
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Some popular editors for developing with JS include [Atom](https://atom.io/) and [Visual Studio Code](https://code.visualstudio.com/download). Depending on the editor of your choose, it is recommended to install ES6+ and SASS/LESS language support plugins.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 4. Quality Procedures
 
-### Code Splitting
+**All code quality procedures must pass for every new contribution.**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### a. Git
 
-### Analyzing the Bundle Size
+Contributors should adhere to the git practices conveyed in [The Wizeline Contributing Guidelines](https://github.com/wizeline/wize-docs/blob/master/development/git-contributing-guidelines.md)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### b. Code Style
 
-### Making a Progressive Web App
+We use the following testing tools:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+* [ESLint](https://eslint.org/docs/about/) to assure our coding adheres to some style guide. In the [.eslintrc.json](.eslintrc) configuration, we extend the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) and we aggregate some other rules and exceptions.
 
-### Advanced Configuration
+Every change in the code requires passing tests. To verify this requirement:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+1. Run the linting test. Use the command `npm run lint`
 
-### Deployment
+#### Theming
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+We're using [Semantic-UI Framework]() for creating the components layout.
+Refer to official components documentation and usage for better understanding.
 
-### `npm run build` fails to minify
+### c. Adding new Dependencies
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+We use [NPM](http://npmjs.com/) to manage dependencies.
+Dependencies are listed in the [package.json](package.json) spec.
+
+* When proposing new dependencies, the popularity, antiquity and pulse should be considered. When possible, provide a comparison of at least two options.
+
+* Dependencies should be added in the `devDependencies` section as general rule. This helps having a more optimal bundles for deployments.
+
+* Dependencies should be added with the major and minor version (ie v1.2 rather than v1.2.3^). In the long run, this will ensure incompatible changes in the 3rd parties wont break the project.
+
+### d. Testing
+
+We use [Jest](https://jestjs.io/) and [Enzyme](https://airbnb.io/enzyme/) to manage unit testing.
+
+* For Jest configuration use the `jest.config.js` file.
+* Any test setup that has to be done before running jest must go inside `jest.setup.js`.
+* Enzyme's adapter configuration and the jsdom virtual enviroment configuration goes inside `jest.setup.js`.
+
+Change in the code requires passing tests. To verify this requirement:
+
+1. Run the tests cases to see the coverage table. Use the command `npm run test`.
+
+## 5. Deploymnet
+

@@ -1,0 +1,43 @@
+{
+  "extends": ["airbnb", "react-app"],
+  "env": {
+    "jest": true
+  },
+  "globals": {
+    "__": true,
+    "$": true,
+    "document": true,
+    "localStorage": true,
+    "window": true
+  },
+  "rules": {
+    "import/no-named-as-default": 0,
+    "class-methods-use-this": 0,
+    "jsx-a11y/alt-text": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "react/no-array-index-key": 0,
+    "react/prop-types": 0,
+    "react/destructuring-assignment": [true, "always", { "ignoreClassFields": true }],
+    "no-debugger": 0,
+    "no-alert": 0,
+    "no-plusplus": 0
+  },
+  "overrides": [
+    {
+      "files": "**/*.test.js",
+      "rules": {
+        "flowtype/require-valid-file-annotation": "never"
+      }
+  }
+  ],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "root": ["./src"]
+      }
+    }
+  }
+}
