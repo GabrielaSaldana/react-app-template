@@ -3,6 +3,7 @@ module.exports = {
     '<rootDir>/src/test-utils/jest.setup.js',
   ],
   testMatch: [
+    '**/src/?(*.)+(spec|test).js',
     '**/src/components/**/?(*.)+(spec|test).js',
     '**/src/screens/**/?(*.)+(spec|test).js',
     '**/src/libraries/**/?(*.)+(spec|test).js',

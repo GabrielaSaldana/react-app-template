@@ -1,0 +1,36 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "react-app"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["env", {
+          "modules": "commonjs",
+          "targets": {
+            "node": "current"
+          }
+        }]
+      ]
+    }
+  },
+  "plugins": [
+    ["@babel/plugin-proposal-class-properties"],
+    ["@babel/plugin-proposal-object-rest-spread", { "loose": true, "useBuiltIns": true }],
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "components": "./src/components",
+        "screens": "./src/screens",
+        "images": "./src/images",
+        "test-utils": "./src/test-utils",
+        "store": "./src/store",
+        "routes": "./src/routes",
+        "libraries": "./src/libraries",
+        "__mocks__": "./src/__mocks__"
+      }
+    }]
+  ]
+}
