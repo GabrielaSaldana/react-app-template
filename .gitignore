@@ -7,11 +7,6 @@
 
 # misc
 .DS_Store
-.env
-.env.development.local
-.env.development
-.env.test.local
-.env.production
 
 ########################## Node ##########################
 # Logs
@@ -55,7 +50,6 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
 /venv
 
 # parcel-bundler cache (https://parceljs.org/)
