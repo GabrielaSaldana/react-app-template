@@ -36,7 +36,17 @@
   "settings": {
     "import/resolver": {
       "babel-module": {
-        "root": ["./src"]
+        "root": ["./src"],
+        "alias": {
+          "components": "./src/components",
+          "screens": "./src/screens",
+          "images": "./src/images",
+          "test-utils": "./src/test-utils",
+          "store": "./src/store",
+          "routes": "./src/routes",
+          "libraries": "./src/libraries",
+          "__mocks__": "./src/__mocks__"
+        }
       }
     }
   }
